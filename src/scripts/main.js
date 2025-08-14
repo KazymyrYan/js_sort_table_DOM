@@ -7,8 +7,11 @@ function sortByASC(columnIndex) {
     const aValue = a.querySelectorAll('td')[columnIndex].textContent;
     const bValue = b.querySelectorAll('td')[columnIndex].textContent;
 
-    if (typeof aValue === 'number' && typeof bValue === 'number') {
-      return aValue - bValue;
+    const aNum = parseFloat(aValue);
+    const bNum = parseFloat(bValue);
+
+    if (!isNaN(aNum) && !isNaN(bNum)) {
+      return aNum - bNum;
     }
 
     return aValue.localeCompare(bValue, undefined, { numeric: true });
